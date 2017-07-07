@@ -1,6 +1,6 @@
 #xts functions reference
 
-# data.table last function interefering with xts last, use the below to fix
+# data.table last function interefering with xts last, use the below to fix, otherwise get a dimensionality error
 xts::last(data,10)
 
 
