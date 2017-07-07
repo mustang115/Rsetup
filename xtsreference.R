@@ -13,3 +13,9 @@ time(data[10])
 
 dateStart <- time(rolling.model[min(which(!is.na(rolling.model$fit))),])
 
+# subsetting xts by parameters holding dates 
+# you cant just use variable names as subsets, use the paste command to create the deried output
+# https://stackoverflow.com/questions/14101694/subsetting-in-xts-using-a-parameter-holding-dates
+
+strategy.returns <- strategy.returns[paste(dateStart,dateEnd,sep="/")]
+
