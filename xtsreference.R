@@ -6,3 +6,10 @@ xts::last(data,10)
 
 # returns the index based on rownumber refrence
 time(data[10])
+
+
+# find the first non NA index based on a particular row
+# use is.na with which and min 
+
+dateStart <- time(rolling.model[min(which(!is.na(rolling.model$fit))),])
+
