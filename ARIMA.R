@@ -44,7 +44,10 @@ plot(sp500w, main="S&P 500 weekly returns")
 # 1. Trend - detrend ( diff) 
 #       Works for 1) trend stationary processes and 2) random walk with drift
 # 2. Seasonality
-# 3. Heteroskedasticity - take a log
+# 3. Heteroskedasticity - take a log diff( you are essentially calculating the return or growth rate of the series)
+
+
+## For trend stationarity
 
 
 par(mfrow=c(2,1))
@@ -57,4 +60,34 @@ ppar(mfrow=c(2,1))
 plot(cmort)
 plot(diff(cmort)) 
 par(mfrow=c(1,1))   #Revert plot back to normal
+
+
+## For trend and heteroskedasticity
+
+# astsa and xts are preloaded 
+
+# Plot GNP series (gnp) and its growth rate
+par(mfrow = c(2,1))
+plot(gnp)
+plot(diff(log(gnp)))
+
+# Plot DJIA closings (djia$Close) and its returns
+par(mfrow = c(2,1))
+plot(djia$Close)
+plot(diff(log(djia$Close)))
+
+
+## Simulating AR and MA models with arima.sim()
+
+model1 <- list(order=c(0,0,1),
+               ma=0.9)
+x <- arima.sim(model1,100)
+plot(y, type="l")
+
+
+model2 <- list(order=c(2,0,0),
+               ar=c(0,-0.9))
+x <- arima.sim(model2,100)
+plot(x,type="l")
+ 
 
