@@ -76,18 +76,21 @@ par(mfrow = c(2,1))
 plot(djia$Close)
 plot(diff(log(djia$Close)))
 
-
+##  any stationary time series can be written as a linear combination of white noise. In addition, any ARMA model has this form, so it is a good choice for modeling stationary time series.
 ## Simulating AR and MA models with arima.sim()
 
-model1 <- list(order=c(0,0,1),
-               ma=0.9)
-x <- arima.sim(model1,100)
-plot(y, type="l")
+# Generate and plot white noise
+WN <- arima.sim( model= list(c(0,0,0)) , 200 )
+plot(WN)
 
 
-model2 <- list(order=c(2,0,0),
-               ar=c(0,-0.9))
-x <- arima.sim(model2,100)
-plot(x,type="l")
+# Generate and plot an MA(1) with parameter .9 
+MA <- arima.sim( model = list (c(0,0,1), ma=0.9), 200)
+plot(MA)
+
+# Generate and plot an AR(2) with parameters 1.5 and -.75
+AR <- arima.sim( model = list( c(2,0,0), ar=c(1.5, -0.75)), 200)
+plot(AR)
+
  
 
