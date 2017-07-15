@@ -47,13 +47,14 @@ plot(sp500w, main="S&P 500 weekly returns")
 # 3. Heteroskedasticity - take a log
 
 
-plot(mfrow=c(2,1))
+par(mfrow=c(2,1))
 plot(globtemp)
-plot(diff(globtemp))
-plot(mfrow=c(1,1,))  #Revert plot back to normal 
+plot(diff(globtemp)) 
+par(mfrow=c(1,1))   #Revert plot back to normal
 
-plot(mfrow=c(2,1))
+
+ppar(mfrow=c(2,1))
 plot(cmort)
-plot(diff(cmort))  
-plot(mfrow=c(1,1,))  #Revert plot back to normal
+plot(diff(cmort)) 
+par(mfrow=c(1,1))   #Revert plot back to normal
 
