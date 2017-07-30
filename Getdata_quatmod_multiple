@@ -1,0 +1,24 @@
+# gets multiple tickers in a single xts at the end.
+library(quantmod)
+ticker_symbol <- c("zzzz","IVW","JKE","QQQ","SPYG","VUG" )
+sDate <- as.Date("2007-09-04") #Start Date
+eDate <- as.Date("2014-09-02") #End   Date
+
+get.symbol <- function(ticker) {  
+  tryCatch(temp <- Ad(getSymbols(ticker, auto.assign=FALSE, 
+                                 from = sDate, to = eDate, warning = FALSE)),    
+           error = function(e) {
+             message("-ERROR-")
+             message(paste("Error for ticker symbol  :", ticker, "\n"))
+             message("Here's the original error message: ")
+             message(e)
+             message("")
+             return(NULL)},
+           finally = {
+             message(paste("Data was processed for symbol:", "[", ticker, "]" ))
+             message("\n","******************************************", "\n")  
+           }) 
+}
+result <- do.call(cbind,lapply(ticker_symbol,get.symbol))
+names(result) <- gsub("\\..+","",names(result))  # remove ".Adjusted" from names
+head(result)
