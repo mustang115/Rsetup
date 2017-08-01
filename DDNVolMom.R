@@ -1,3 +1,4 @@
+#https://quantstrattrader.wordpress.com/2015/02/26/the-downside-of-rankings-based-strategies/
 #https://stackoverflow.com/questions/1743698/evaluate-expression-given-as-a-string
 # Evaluate regular expression as string
 
